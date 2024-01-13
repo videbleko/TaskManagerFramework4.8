@@ -1,0 +1,55 @@
+﻿@model IEnumerable <TaskManager.Models.Tasks>
+
+<h2>Listado de tareas</h2>
+
+<p>
+	<a href="@Url.Action("Create")">Nueva tarea.</a>
+</p>
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.ID)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Descripcion)
+			</th>	
+			<th>
+				@Html.DisplayNameFor(model => model.Estado)
+			</th>	
+			<th>
+				@Html.DisplayNameFor(model => model.Prioridad)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.FechaDeCreacion)
+			</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.ID)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Descripcion)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Estado)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Prioridad)
+				</td>	
+				<td>
+					@Html.DisplayFor(modelItem => item.FechaDeCreacion)
+				</td>
+				<td>
+					<a href="@Url.Action("Edit", new { id = item.ID })">Editar</a> |
+					<a href="@Url.Action("Delete", new { id = item.ID })">Eliminar</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>

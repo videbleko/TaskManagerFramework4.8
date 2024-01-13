@@ -1,0 +1,37 @@
+﻿@model TaskManager.Models.Tasks
+
+@{
+	ViewBag.Title = "Crear";
+}
+
+
+<h2>Nueva tarea.</h2>
+
+@using (Html.BeginForm())
+{
+	@Html.AntiForgeryToken()
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.Descripcion)
+		@Html.EditorFor(model => model.Descripcion)
+		@Html.ValidationMessageFor(model => model.Descripcion)
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.Estado)
+		@Html.EditorFor(model => model.Estado)
+		@Html.ValidationMessageFor(model => model.Estado)
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.Prioridad)
+		@Html.EditorFor(model => model.Prioridad)
+		@Html.ValidationMessageFor(model => model.Prioridad)
+	</div>
+
+	<input type="submit" value="Crear" class="btn btn-primary" />
+}
+
+<div>
+	@Html.ActionLink("Ir al inicio.", "Index")
+</div>
