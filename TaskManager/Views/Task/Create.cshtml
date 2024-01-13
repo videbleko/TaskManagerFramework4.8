@@ -4,34 +4,40 @@
 	ViewBag.Title = "Crear";
 }
 
+<h3>Nueva tarea</h3>
 
-<h2>Nueva tarea.</h2>
 
 @using (Html.BeginForm())
 {
 	@Html.AntiForgeryToken()
 
 	<div class="form-group">
-		@Html.LabelFor(model => model.Descripcion)
-		@Html.EditorFor(model => model.Descripcion)
-		@Html.ValidationMessageFor(model => model.Descripcion)
+		@Html.LabelFor(model => model.Descripcion, new { @class = "form-label" })
+		@Html.TextBoxFor(model => model.Descripcion, new { @class = "form-control" })
+		@Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
 	</div>
+	<br />
+	<div class="form-group">
+		@Html.LabelFor(model => model.Estado, new { @class = "form-label" })
+
+		@Html.DropDownListFor(model => model.Estado, Model.ListaDeEstados, new { @class = "form-control" })
+
+		@Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
+
+	</div>
+	<br />
 
 	<div class="form-group">
-		@Html.LabelFor(model => model.Estado)
-		@Html.EditorFor(model => model.Estado)
-		@Html.ValidationMessageFor(model => model.Estado)
-	</div>
 
-	<div class="form-group">
-		@Html.LabelFor(model => model.Prioridad)
-		@Html.EditorFor(model => model.Prioridad)
-		@Html.ValidationMessageFor(model => model.Prioridad)
-	</div>
+		@Html.LabelFor(model => model.Prioridad, new { @class = "form-label" })
 
-	<input type="submit" value="Crear" class="btn btn-primary" />
+		@Html.DropDownListFor(model => model.Prioridad, Model.ListaDePrioridades, new { @class = "form-control" })
+
+		@Html.ValidationMessageFor(model => model.Prioridad, "", new { @class = "text-danger" })
+	</div>
+	<br />
+	@Html.ActionLink("Ir al inicio", "Index", null, new { @class = "btn btn-secondary" })
+	<button type="submit" class="btn btn-primary">Crear</button>
 }
 
-<div>
-	@Html.ActionLink("Ir al inicio.", "Index")
-</div>
+

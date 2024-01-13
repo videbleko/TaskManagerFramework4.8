@@ -14,7 +14,6 @@ namespace TaskManager.Controllers
 {
     public class TaskController : Controller
     {
-
         private TaskDbContext _db = new TaskDbContext();
 
         public async Task<ActionResult> Index()
@@ -22,10 +21,13 @@ namespace TaskManager.Controllers
             return View(await _db.Tasks.ToListAsync());
         }
 
+
         public ActionResult Create()
         {
-            return View();
+            Tasks tasks = new Tasks();  
+            return View(tasks);
         }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -40,6 +42,7 @@ namespace TaskManager.Controllers
             }
             return View(task);
         }
+
 
         public ActionResult Edit(int? id)
         {
@@ -57,6 +60,7 @@ namespace TaskManager.Controllers
             return View(tasks);
         }
 
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit( Tasks task)
@@ -69,7 +73,6 @@ namespace TaskManager.Controllers
                 return RedirectToAction("Index");
             }
              return RedirectToAction("Index");
-            
         }
 
        

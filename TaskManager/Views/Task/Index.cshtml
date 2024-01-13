@@ -1,9 +1,9 @@
 ﻿@model IEnumerable <TaskManager.Models.Tasks>
 
-<h2>Listado de tareas</h2>
+<h3>Listado de tareas</h3>
 
 <p>
-	<a href="@Url.Action("Create")">Nueva tarea.</a>
+	<a href="@Url.Action("Create")" class="btn btn-primary">Nueva tarea</a>
 </p>
 <table class="table">
 	<thead>
@@ -46,8 +46,10 @@
 					@Html.DisplayFor(modelItem => item.FechaDeCreacion)
 				</td>
 				<td>
-					<a href="@Url.Action("Edit", new { id = item.ID })">Editar</a> |
-					<a href="@Url.Action("Delete", new { id = item.ID })">Eliminar</a>
+
+					<a href="@Url.Action("Edit", new { id = item.ID })" class="btn btn-info">Editar</a> |
+					<a href="@Url.Action("Delete", new { id = item.ID })" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar este tarea?')">Eliminar</a>
+
 				</td>
 			</tr>
 		}
